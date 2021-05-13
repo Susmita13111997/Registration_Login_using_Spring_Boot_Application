@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script>
+function validate()
+{ 
+    	var fname = document.form.firstname.value; 
+	    var lname = document.form.lastname.value; 
+     	var username = document.form.username.value; 
+     	var password = document.form.passwd.value;
+     	
+        var conpassword= document.form.confirmpassword.value;
+
+	     if (fname==null || fname=="")
+	     { 
+	     alert("Firstname can't be blank"); 
+	     return false; 
+	     }
+
+	     if (lname==null || lname=="")
+	     { 
+	     alert("Lastname can't be blank"); 
+	     return false; 
+	     }
+     
+	     if (username==null || username=="")
+		     { 
+		     alert("Username can't be blank"); 
+		     return false; 
+		     }
+	     
+	     if (password==null || password=="")
+	     { 
+	     	alert("password can't be blank"); 
+	     	return false; 
+	     }
+
+
+	     if (conpassword==null || conpassword=="")
+	     { 
+	    	 	alert(" confirm password can't be blank"); 
+		     	return false; 
+	     }
+     
+	     
+	     if(password.length<6)
+		     { 
+		     alert("Password must be at least 6 characters long."); 
+		     return false; 
+		     }
+	      
+	     if (password!=conpassword)
+		     { 
+		     alert("Confirm Password should match with the Password"); 
+		     return false; 
+		     } 
+ } 
+</script> 
+</head>
+
+<body style="background-color:WhiteSmoke;">
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-md-6 col-md-offset-3">
+				
+				<b><h1 style="padding-top: 30px;
+				    padding-right: 30px;
+				    padding-left: 30px;
+				    padding-bottom: 0px;
+				    border-top-width: 20px;
+				    border-right-width: 10px;
+				    margin-left: 10px;
+				    margin-right: 10px;
+					text-align: center;
+					text-shadow: gray;">Registration</h1></b>
+				<hr style="height:1px;border-width:0;color:lighblack;background-color:gray">
+				<form  name="form" th:action="@{/registration}" method="post" onsubmit="return validate()">		
+					<div th:if="${success}">
+					<div class="alert alert-info" th:text="${success}"></div>
+					</div>
+
+				
+					<div class="form-group">
+						<input type="text" name="firstname" id="firstName" class="form-control" placeholder="Enter Firstname" />
+					</div>
+
+					<div class="form-group"> 
+						<input type="text" name="lastname"	id="lastName" class="form-control" placeholder="Enter Lastname" />
+					</div>
+
+
+					
+					<div class = "form-group">
+						<input type="text" name ="username" class = "form-control" id ="username" placeholder="Enter Username" />
+					</div>
+					
+					<div class="form-group">
+						 <input type="password" name="passwd" class="form-control"  placeholder="Enter Password" />
+					</div>
+					
+					<div class="form-group"> 
+						<input type="password" name="confirmpassword"  class="form-control" placeholder="Confirm Password"/>
+					</div>
+								
+					
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-success" value="Register" />
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+						    <span> Already have an account? <a href="/" th:href="@{/login}">Login here</a></span>
+				          </div>
+			  </div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

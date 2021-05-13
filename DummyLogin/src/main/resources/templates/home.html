@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Home</title>
+</head>
+<body style="background-color: Bisque;">
+<div class="container">
+	  <div class="text-center">
+	   		<i><h2 style="padding-top: 20px;
+    				   padding-right: 20px;
+    				   padding-left: 20px;" 
+    				   th:text="${UserName}"></h2></i>
+	   		<h4 style="float:right; margin-bottom: 50px;"><a href="/" th:href="@{/login}"><span class="glyphicon glyphicon-log-out"><i>Logout</i></span></a></h4>
+	   		<br><hr style="height:1px;border-width:0;color:brown;background-color:brown">
+	  </div>
+</div>
+
+		<br>
+		<br>
+		<center>
+				<form th:action="@{/uploadfile}" method="post" enctype="multipart/form-data">
+					<div th:if="${success}">
+					<div class="alert alert-success" >File uploaded successfully.</div>
+					</div>
+
+					<div th:if="${error}">
+					<div class="alert alert-info" th:text="${errors}" ></div>
+					</div>
+
+
+				<table style="text-align: center;"> 
+				<tr>
+				<th><label for="myfile">Choose a File : </label></th>
+  				<th><input type="file" id="myfile" name="file" accept="file_extension" /></th>
+				</tr>
+				</table>
+				<br><br>
+				<table style="text-align: center;">
+				<tr>
+				<td colspan="2">
+				<input type="submit" name="login-submit" id="login-submit" class="btn btn-primary" value="Upload" />
+				</td>
+				</tr>
+				</table> 
+					 
+					
+					
+			</form>
+		</center>
+</body>
+</html>
